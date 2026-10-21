@@ -1,0 +1,41 @@
+application:
+  subdomain: miyabi
+  background_task: true
+  multi_instance: false
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://miyabi:8080/
+
+services:
+  miyabi:
+    # upstream: ghcr.io/ppxb/miyabi:v0.2.1
+    image: ghcr.1ms.run/ppxb/miyabi:v0.2.1@sha256:8d5a21a122948ebc63d35f613a1b181f2ab4c0fb70fa6b11dbcdbac66bb6bb3a
+    environment:
+      - TZ=Asia/Shanghai
+      - MIYABI_LISTEN=:8080
+      - MIYABI_DATA_DIR=/app/data
+      - MIYABI_PUBLIC_URL=https://${LAZYCAT_APP_DOMAIN}
+      - MIYABI_ACCESS_PASSWORD={{ .U.access_password }}
+      - MIYABI_JWT_SECRET={{ stable_secret "jwt_secret" }}
+      - MIYABI_LOG_LEVEL=info
+    binds:
+      - /lzcapp/var/miyabi:/app/data
+    healthcheck:
+      test:
+        - CMD
+        - /app/miyabi
+        - --version
+      disable: true
+
+usage: |
+  Miyabi 是配合 115 网盘使用的一站式影片管理 & Emby 管理平台：
+  可直接对接 115 进行刮削、订阅，也可作为底层服务为 Emby 生成 STRM 直链与元数据。
+
+  - 打开应用后输入安装时设置的「访问密码」进入（建议保持门禁开启）。
+  - 生成的 STRM 与元数据位于应用数据目录的 emby 子目录，可挂载给 Emby 作为媒体库。
+  - Emby 服务器地址、API Key、媒体库路径可在「设置 → Emby」中随时配置。
+
+  注意：本应用面向成人内容管理场景，请勿在公共场合或面向未成年人使用；
+  请自行确认所在地区关于相关内容的法律法规。

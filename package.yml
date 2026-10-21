@@ -1,0 +1,20 @@
+package: community.lazycat.app.miyabi
+version: 0.2.1
+name: Miyabi
+description: "One-stop JAV and Emby media management platform built on the 115 cloud drive"
+author: ppxb
+license: GPL-3.0
+homepage: https://github.com/ppxb/miyabi
+min_os_version: 1.5.0
+
+permissions:
+  required:
+    - net.internet
+
+locales:
+  zh:
+    name: "Miyabi"
+    description: "配合 115 网盘的一站式影片管理 & Emby 管理平台：直接对接 115 刮削与订阅，也可作为底层服务为 Emby 提供 STRM 直链与元数据"
+  en:
+    name: "Miyabi"
+    description: "One-stop JAV and Emby media management platform on top of the 115 cloud drive, including scraping, subscriptions and STRM export"

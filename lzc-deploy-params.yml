@@ -1,0 +1,13 @@
+params:
+  - id: access_password
+    type: secret
+    name: "Access password"
+    description: "Password required to open the Miyabi web UI; leave a value in place to keep the gate enabled"
+    default_value: "$random(len=20)"
+    optional: false
+
+locales:
+  zh:
+    access_password:
+      name: "访问密码"
+      description: "打开 Miyabi 时输入的访问密码；修改后需重新安装或更新应用配置才生效"
