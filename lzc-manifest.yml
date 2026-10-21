@@ -7,11 +7,10 @@ application:
   upstreams:
     - location: /
       backend: http://miyabi:8080/
-
 services:
   miyabi:
     # upstream: ghcr.io/ppxb/miyabi:v0.2.1
-    image: ghcr.1ms.run/ppxb/miyabi:v0.2.1@sha256:8d5a21a122948ebc63d35f613a1b181f2ab4c0fb70fa6b11dbcdbac66bb6bb3a
+    image: ghcr.1ms.run/ppxb/miyabi:v0.2.1
     environment:
       - TZ=Asia/Shanghai
       - MIYABI_LISTEN=:8080
@@ -28,7 +27,6 @@ services:
         - /app/miyabi
         - --version
       disable: true
-
 usage: |
   Miyabi 是配合 115 网盘使用的一站式影片管理 & Emby 管理平台：
   可直接对接 115 进行刮削、订阅，也可作为底层服务为 Emby 生成 STRM 直链与元数据。
