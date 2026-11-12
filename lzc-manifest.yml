@@ -9,8 +9,8 @@ application:
       backend: http://miyabi:8080/
 services:
   miyabi:
-    # upstream: ghcr.io/ppxb/miyabi:v0.2.1
-    image: ghcr.1ms.run/ppxb/miyabi:v0.2.1
+    # upstream: ghcr.io/ppxb/miyabi:v0.2.2
+    image: ghcr.1ms.run/ppxb/miyabi:v0.2.2
     environment:
       - TZ=Asia/Shanghai
       - MIYABI_LISTEN=:8080
